@@ -1,0 +1,12 @@
+{
+  "hashing":{
+    "iterations": 2,
+    "secret": "Whatever",
+    "algorithms": ["sha256", "sha512", "sha1"],
+    "keylen": 64
+  },
+  "jwt":{
+    "secret": "sunsets_sunrises",
+    "algorithms": ["HS256", "ES256", "ES512", "RS256", "RS512"]
+  }
+}
