@@ -11,7 +11,9 @@ const respond = require('koa-respond');
 const app = new Koa();
 
 app.use(Helmet());
-app.use(cache(path.join(__dirname, 'public')));
+app.use(cache(path.join(__dirname, 'public'), {
+    cacheControl: 'must-revalidate'
+}));
 app.use(logger());
 app.use(respond());
 app.use(bodyParser({
@@ -26,9 +28,12 @@ app.use(async (ctx, next) => {
     await next();
 });
 
-const router = require('./routes/auth');
+const authRouter = require('./routes/auth');
+const indexRouter = require('./routes/index');
 
-app.use(router.routes());
+app.use(authRouter.routes());
+app.use(indexRouter.routes());
+
 app.listen(3000, () => console.log('The server is running on 3000 port!'));
 
 
