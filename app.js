@@ -1,19 +1,14 @@
 'use strict';
 
-const path = require('path');
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
-const cache = require('koa-static-cache');
 const Helmet = require('koa-helmet');
 const respond = require('koa-respond');
 
 const app = new Koa();
 
 app.use(Helmet());
-app.use(cache(path.join(__dirname, 'public'), {
-    cacheControl: 'must-revalidate'
-}));
 app.use(logger());
 app.use(respond());
 app.use(bodyParser({
