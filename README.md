@@ -1,7 +1,7 @@
 ### Description
 Koa boilerplate with REST API JWT koa-passport authentication and registration with caching static on specific routes.
 ### Authentication and registration
-You can review a simple example of JWT stateless authentication using: 
+You can review a simple example of JWT stateless authentication built with: 
 * [koa-passport](https://github.com/rkusa/koa-passport) 
 * [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
 * [passport-jwt](https://github.com/mikenicholson/passport-jwt)
