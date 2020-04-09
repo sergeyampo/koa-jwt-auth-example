@@ -12,6 +12,6 @@ Registration is implemented with Redis store([redis](https://github.com/NodeRedi
 A flexible example of caching static files is provided by: 
 * [koa-send](https://github.com/koajs/send)
 * [koa-conditional-get](https://github.com/koajs/conditional-get)
-*[koa-etag](https://github.com/koajs/etag)
+* [koa-etag](https://github.com/koajs/etag)
 
 There is a cache policy on specific routes and middlewares so you can correctly use such logic in your SPA application or elsewhere you need API and a static serving in one place.
