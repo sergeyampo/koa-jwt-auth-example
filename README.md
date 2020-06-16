@@ -7,6 +7,12 @@ yarn run gen_keypair
 yarn run start
 ````
 
+### Testing
+To execute all Newman-Postman API tests:
+```
+yarn run test_api
+```
+
 ### Description
 Koa boilerplate with REST API JWT koa-passport authentication and registration with caching static on specific routes.
 ### Authentication and registration

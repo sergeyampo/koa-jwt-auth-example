@@ -12,6 +12,8 @@
     "koa-respond": "^2.1.0",
     "koa-router": "^8.0.8",
     "koa-send": "^5.0.0",
+    "newman": "^5.1.0",
+    "newman-reporter-html": "^1.0.5",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "redis": "^3.0.2"
@@ -20,7 +22,8 @@
     "start": "node ./app.js",
     "test": "NODE_ENV= jest",
     "redis": "./scripts/redis.sh",
-    "gen_keypair": "./scripts/gen_keypair.sh"
+    "gen_keypair": "./scripts/gen_keypair.sh",
+    "test_api": "./scripts/test_api.sh"
   },
   "devDependencies": {
     "jest": "^25.2.4"

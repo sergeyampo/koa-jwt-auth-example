@@ -1,189 +1,11 @@
 {
 	"info": {
-		"_postman_id": "0af38254-d64f-4486-9ce3-05bba3a864e7",
+		"_postman_id": "781d6841-11a8-43c4-9d68-a2104afc00c0",
 		"name": "koa-server-auth",
 		"description": "Check JWT send and recieve by server, check statuses",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "Incorret JWT",
-			"item": [
-				{
-					"name": "Wrong JWT",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b5a12936-7324-4381-aaec-0e3be4687dd2",
-								"exec": [
-									"pm.test(\"Intruded JWT detect\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"Unexpected token\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIU4a5NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlcmdleSIsImlhdCI6MTU4NTkyMjc4NywiZXhwIjoxnTg1OTIyODQ3fQ.zlPXpXvj1wJHQLhURJrJYfilTrR1FVAYLGDHWbQp-0E",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"status"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Expired JWT",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b5a12936-7324-4381-aaec-0e3be4687dd2",
-								"exec": [
-									"pm.test(\"Expired JWT check\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"expired\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlcmdleSIsImlhdCI6MTU4NTkyMjc4NywiZXhwIjoxNTg1OTIyODQ3fQ.zlXPpXvj1wJHQLhURJrJYfilTrR1FVAYLGDHWbQp-0E",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"status"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Incorrect credentials",
-			"item": [
-				{
-					"name": "Incorrect password",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a022533a-2d58-402b-ac98-9b7e45d30d8a",
-								"exec": [
-									"pm.test(\"Incorrect password\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"Incorrect login or password\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"email\": \"sergey\",\n\t\"password\": \"password1\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/auth/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"login"
-							]
-						},
-						"description": "Without JWT"
-					},
-					"response": []
-				},
-				{
-					"name": "Incorrect email",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a022533a-2d58-402b-ac98-9b7e45d30d8a",
-								"exec": [
-									"pm.test(\"Incorrect email\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"Incorrect login or password\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"email\": \"sergey161681\",\n\t\"password\": \"password\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/auth/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"login"
-							]
-						},
-						"description": "Without JWT"
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
 		{
 			"name": "Registration",
 			"item": [
@@ -193,7 +15,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f1f785c7-068a-4221-bb30-c0036a0daba3",
+								"id": "2d1c3abd-28ae-4641-9f66-67ff36bb8ed1",
 								"exec": [
 									"pm.environment.set(\"$randomPassword\", \"variable_value\");"
 								],
@@ -203,7 +25,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d9f21473-3a0f-4a52-88af-c5eb807a44d9",
+								"id": "291e9136-521a-463e-b327-a5fbf2d80fc6",
 								"exec": [
 									"// Parsing the response returned by the request.",
 									"var jsonData = pm.response.json();",
@@ -247,7 +69,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6bb7a5d0-dad4-43e0-8abd-7abf970e421e",
+								"id": "34af8e85-330d-4c43-ab8c-175512384471",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -289,6 +111,184 @@
 			"protocolProfileBehavior": {}
 		},
 		{
+			"name": "Incorret JWT",
+			"item": [
+				{
+					"name": "Wrong JWT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab9e60a6-50a5-4322-84ab-769bad52e216",
+								"exec": [
+									"pm.test(\"Intruded JWT detect\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Unexpected token\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIU4a5NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlcmdleSIsImlhdCI6MTU4NTkyMjc4NywiZXhwIjoxnTg1OTIyODQ3fQ.zlPXpXvj1wJHQLhURJrJYfilTrR1FVAYLGDHWbQp-0E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expired JWT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "240138b6-f7f5-4907-8031-611c776e5096",
+								"exec": [
+									"pm.test(\"Expired JWT check\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"expired\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkhpbGRhOTJAZ21haWwuY29tIiwiaWF0IjoxNTkyMjkyNTM0LCJleHAiOjE1OTIyOTI1OTR9.J8HkieScKVXOcI0wC2ZOXhdwOFNjV7aWwNlnpeleiPcRpQ_fcnZ0crS-jRjpeVTK5qQPNVWurnvJCUseEl2c2w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Incorrect credentials",
+			"item": [
+				{
+					"name": "Incorrect password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "453709ee-d525-4e86-8e9d-6c28127c6808",
+								"exec": [
+									"pm.test(\"Incorrect password\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Incorrect login or password\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"sergey\",\n\t\"password\": \"password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Without JWT"
+					},
+					"response": []
+				},
+				{
+					"name": "Incorrect email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4fdf29eb-fdc8-4d04-bec0-2c1e2d312dc2",
+								"exec": [
+									"pm.test(\"Incorrect email\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Incorrect login or password\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"sergey161681\",\n\t\"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Without JWT"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Incorrect registration",
 			"item": [
 				{
@@ -297,7 +297,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f1f785c7-068a-4221-bb30-c0036a0daba3",
+								"id": "bf5b344f-d0ce-4294-82fb-6b96186aed46",
 								"exec": [
 									"pm.environment.set(\"$randomPassword\", \"variable_value\");"
 								],
@@ -307,7 +307,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d9f21473-3a0f-4a52-88af-c5eb807a44d9",
+								"id": "d6883931-8dab-4883-bfac-05c8d6293301",
 								"exec": [
 									"// Parsing the response returned by the request.",
 									"var jsonData = pm.response.json();",
@@ -357,9 +357,11 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "eb165e5f-c1b5-47ce-8d39-9b688eb1b43f",
+								"id": "ad0cd044-b0c8-4c76-bd74-11fdd7a7b60a",
 								"exec": [
-									"pm.environment.set(\"ETag\", pm.response.headers.get(\"ETag\"));",
+									"pm.environment.set(\"ETag\", pm.response.headers.get(\"ETag\").replace(/\"/g, '|'));",
+									"",
+									"console.log(pm.environment.get(\"ETag\"));",
 									"",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -391,11 +393,23 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "229b3d40-413e-4752-8ff8-c72917a849c6",
+								"id": "69710485-3a80-4c1d-90ad-3f2281181e42",
 								"exec": [
+									"console.log(pm.environment.get(\"ETag\"));",
+									"",
 									"pm.test(\"Status code is 304\", function () {",
 									"    pm.response.to.have.status(304);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "98fff4d7-1a52-4cbd-91f6-02e31d275d16",
+								"exec": [
+									"pm.environment.set(\"ETag\", pm.environment.get(\"ETag\").replace(/[|]/g, '\"'));"
 								],
 								"type": "text/javascript"
 							}
@@ -407,6 +421,11 @@
 							{
 								"key": "If-None-Match",
 								"value": "{{ETag}}",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "must-revalidate",
 								"type": "text"
 							}
 						],
@@ -428,7 +447,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a022533a-2d58-402b-ac98-9b7e45d30d8a",
+						"id": "9407e5a7-733b-44f9-94ad-f535054a1c7b",
 						"exec": [
 							"// Parsing the response returned by the request.",
 							"var jsonData = pm.response.json();",
@@ -472,7 +491,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6bb7a5d0-dad4-43e0-8abd-7abf970e421e",
+						"id": "1616ef15-ca3e-4ba0-b2f5-780c538cb428",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -515,7 +534,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "d6cb0ed8-6133-410a-9eca-fedb79bbe93d",
+				"id": "c6eddf4f-c9fe-4ad8-9e46-45024f5c52d1",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -525,7 +544,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "943f8b78-2533-402e-8892-0e7565042e5f",
+				"id": "be6526a1-c817-4f5f-b249-a8f31621674f",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -535,9 +554,9 @@
 	],
 	"variable": [
 		{
-			"id": "86c0dd93-005e-44d6-b54f-ae33d94ae419",
+			"id": "6bc60238-2cb4-48fb-8f77-3eda6a02197c",
 			"key": "url",
-			"value": "http://localhost:3000/",
+			"value": "http://localhost:3000",
 			"type": "string"
 		}
 	],
