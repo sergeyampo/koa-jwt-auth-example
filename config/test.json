@@ -1,12 +1,25 @@
 {
-  "hashing":{
+  "hashing": {
     "iterations": 2,
     "secret": "Whatever",
-    "algorithms": ["sha256", "sha512", "sha1"],
+    "algorithms": [
+      "sha256",
+      "sha512",
+      "sha1"
+    ],
     "length": 64
   },
-  "jwt":{
+  "jwt": {
     "secret": "sunsets_sunrises",
-    "algorithms": ["ES256", "ES512", "RS256", "RS512"]
+    "algorithms": [
+      "ES256",
+      "ES512",
+      "RS256",
+      "RS512"
+    ]
+  },
+  "redis": {
+    "user": "localhost",
+    "port": 6379
   }
 }

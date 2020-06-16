@@ -1,3 +1,12 @@
+### Starting
+By executing scripts below you'll start redis server in a docker container, generate private/public key-pair ES256 and start Koa server:
+````
+yarn install
+yarn run redis
+yarn run gen_keypair
+yarn run start
+````
+
 ### Description
 Koa boilerplate with REST API JWT koa-passport authentication and registration with caching static on specific routes.
 ### Authentication and registration
