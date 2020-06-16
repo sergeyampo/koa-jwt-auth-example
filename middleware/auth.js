@@ -1,24 +1,23 @@
-'use strict';
-
 const passport = require('../PassportSetUp');
 const cfg = require('config');
 const jwt = require('jsonwebtoken');
 const redis = require('redis');
+const fs = require('fs');
+const path = require('path');
 
 //Check post body for credentials for authentication through the Redis
 async function authPost(ctx, next) {
     //TODO add type of error
-    await passport.authenticate('local', { session: false }, async (error, user, info) => {
+    await passport.authenticate('local', {session: false}, async (error, user, info) => {
         if (error)
-            ctx.badRequest({error: error.message|| info.message});
+            ctx.badRequest({error: error.message || info.message});
         else {
             try {
                 ctx.state.user = user;
                 ctx.state.actionType = 'login';
                 return await next();
                 //TODO add standardized successful message
-            }
-            catch(err){
+            } catch (err) {
                 console.log(err);
                 ctx.internalServerError({message: 'Server cannot handle this request!'});
             }
@@ -33,16 +32,17 @@ async function setJWT(ctx, next){
     }
 
     const payload = {
-      email: ctx.state.user.email
+        email: ctx.state.user.email
     };
 
     const options = {
-      algorithm: cfg.jwt.algorithms[0],
-      expiresIn: '1m',
+        algorithm: cfg.jwt.algorithms[1],
+        expiresIn: '1m',
     };
 
-    const token = jwt.sign(payload, cfg.jwt.secret, options);
-    ctx.state.jwt = token;
+    const privateKey = fs.readFileSync(path.join(__dirname, '../', 'keys', 'ec_private.pem'));
+
+    ctx.state.jwt = jwt.sign(payload, privateKey, options);
 
     return await next();
 }

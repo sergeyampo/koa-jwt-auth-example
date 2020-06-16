@@ -4,9 +4,12 @@ const cfg = require('config');
 const redis = require('redis');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
+const fs = require('fs');
+const path = require('path');
 
 const client = redis.createClient();
 const RedisWorker = require('./store/RedisWorker');
+
 const redisWorker = new RedisWorker(client);
 
 //Pass first parameter object as username and password custom names: email, password.
@@ -29,16 +32,17 @@ passport.use(new LocalStrategy({
 ));
 
 //JWT Strategy
+const publicKey = fs.readFileSync(path.join(__dirname, './keys/', 'ec_public.pem'));
 
 const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: cfg.jwt.secret,
+    secretOrKey: publicKey,
     ignoreExpiration: false,
     jsonWebTokenOptions: {
         clockTolerance: 3,
         maxAge: "1m", ///TODO Change this test time
     },
-    algorithms: cfg.jwt.algorithms,
+    algorithms: cfg.jwt.algorithms[1],
 };
 
 passport.use(new JwtStrategy(jwtOptions, async (payload, done) => {
